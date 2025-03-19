@@ -1,0 +1,249 @@
+<style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-bg: #f8f9fa;
+        }
+
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
+            
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--primary-color);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .main-content {
+            flex: 1 0 auto;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .top-bar {
+            background-color: var(--primary-color);
+            padding: 15px 20px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .logo {
+            height: 50px;
+            margin-left: auto; /* Move logo to the right */
+        }
+
+        .info-dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .info-btn {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .info-btn:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: white;
+            min-width: 200px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+            z-index: 1;
+            margin-top: 5px;
+            right: 0;
+        }
+
+        .dropdown-content.show {
+            display: block;
+        }
+
+        .test-category {
+            padding: 12px 16px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .test-category:hover {
+            background-color: var(--light-bg);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .service-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-decoration: none;
+            color: var(--primary-color);
+            transition: transform 0.2s;
+        }
+
+        .service-card:hover {
+            transform: translateY(- 5px);
+        }
+
+        .service-icon {
+            font-size: 2.5em;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+        }
+
+        .service-title {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .service-description {
+            color: #666;
+        }
+
+        
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--secondary-color);
+            text-decoration: none;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+
+        .back-button:hover {
+            color: var(--primary-color);
+        }
+
+        h1 {
+            color: var(--primary-color);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .test-section {
+            margin-bottom: 20px;
+        }
+        
+        .test-section h2 {
+            font-size: 1.5rem;
+            margin-top: 20px;
+            color: #333;
+        }
+        
+        .test-section p {
+            line-height: 1.6;
+            font-size: 1rem;
+            color: #555;
+        }
+        
+        .test-info-container {
+            max-width: 1000px;
+            margin: 0 ;
+            padding: 800px;
+        }
+        
+        .test-info-content {
+            text-align: center;
+        }
+        
+        .test-image {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            margin-top: 20px;
+            border-radius: 10px;
+        }
+        
+        .back-button {
+            text-decoration: none;
+            color: #007bff;
+            font-size: 16px;
+        }
+        
+        .back-button i {
+            margin-right: 5px;
+        }
+        
+        .section-content {
+            padding: 10px;
+            background: white;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+
+        .footer {
+            flex-shrink: 0;
+            text-align: center;
+            padding: 20px 10px; /* Increased padding for better spacing */
+            background-color: var(--primary-color);
+            color: white;
+            width: 100%;
+            position: relative; /* Ensure it stays at the bottom */
+            bottom: 0; /* Stick to the bottom */
+        }
+
+        @media (max-width: 768px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .container {
+                padding: 15px;
+            }
+
+            .top-bar {
+                flex-direction: column;
+                gap: 10px;
+                align-items: stretch;
+            }
+
+            .logo {
+                align-self: center;
+                margin-left: 0; /* Adjust for mobile */
+                margin-bottom: 10px;
+            }
+
+            .info-dropdown {
+                margin-left: 0;
+                align-self: stretch;
+            }
+
+            .info-btn {
+                justify-content: center;
+            }
+        }
+</style>

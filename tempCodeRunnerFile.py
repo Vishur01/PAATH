@@ -1,0 +1,5 @@
+AV = pickle.load(open('AV.pkl', 'rb'))
+Gmb = pickle.load(open('Gmb.pkl', 'rb'))
+VMA = pickle.load(open('VMA.pkl', 'rb'))
+VFB = pickle.load(open('VFB.pkl', 'rb'))
+OBC = pickle.load(open('OBC.pkl', 'rb'))

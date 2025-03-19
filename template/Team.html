@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <title>PAATH</title>
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.16/tailwind.min.css">
+   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+   <style>
+    :root {
+        --gradient-1: linear-gradient(135deg, #8b8a8c 0%, #10192a 100%);
+        --gradient-2: linear-gradient(45deg, #73787e 0%, #858a8d 100%);
+        --card-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+
+    body {
+        font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
+        background: #f8fafc;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        margin: 0;
+    }
+
+    .header {
+        background: var(--gradient-1);
+        padding: 1rem;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        /* text-align: center; */
+        width: 100%;
+    
+    }
+    .logo {
+        height: 50px;
+        width: auto;
+    }
+
+    .nav-link {
+        color: white;
+        padding: 0.6rem 1.2rem;
+        border-radius: 8px;
+        font-weight: 500;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .nav-link:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(255,255,255,0.1);
+    }
+
+    .hero-section {
+        background: var(--gradient-2);
+        padding: 4rem 0;
+        text-align: center;
+        color: white;
+        margin-bottom: 1rem;
+    }
+
+    .main-title {
+        font-size: 4.5rem;
+        font-weight: 800;
+        letter-spacing: -1px;
+        margin-bottom: 1rem;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+    }
+
+    .subtitle {
+        font-size: 1.5rem;
+        opacity: 0.9;
+    }
+    /* Team Section Container */
+    .team-section {
+        padding: 4rem 2rem;
+        background-color: #f8fafc;
+        min-height: 100vh;
+    }
+
+    .team-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 1rem;
+    }
+
+    /* Section Headers */
+    .section-title {
+        font-size: 2.25rem;
+        font-weight: 700;
+        text-align: center;
+        color: #1f2937;
+        margin-bottom: 2.5rem;
+        position: relative;
+    }
+
+    .section-title::after {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 3px;
+        background: linear-gradient(to right, #2563eb, #60a5fa);
+        border-radius: 2px;
+    }
+
+    /* Grid Layouts */
+    .faculty-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-bottom: 4rem;
+    }
+
+    .students-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+    }
+
+    /* Cards */
+    .team-card {
+        background: white;
+        border-radius: 1rem;
+        overflow: hidden;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+    }
+
+    .team-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-content {
+        padding: 1.5rem;
+    }
+
+    /* Profile Images */
+    .profile-image-container {
+        width: 150px;
+        height: 150px;
+        margin: 0 auto 1.25rem;
+        border-radius: 50%;
+        overflow: hidden;
+        border: 3px solid #e5e7eb;
+        transition: border-color 0.3s ease;
+    }
+
+    .faculty .profile-image-container {
+        width: 180px;
+        height: 180px;
+    }
+
+    .profile-image-container:hover {
+        border-color: #3b82f6;
+    }
+
+    .profile-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+    }
+
+    .profile-image:hover {
+        transform: scale(1.05);
+    }
+
+    /* Text Styles */
+    .member-name {
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: #1f2937;
+        text-align: center;
+        margin-bottom: 0.5rem;
+    }
+
+    .faculty .member-name {
+        font-size: 1.5rem;
+    }
+
+    .member-role {
+        color: #3b82f6;
+        text-align: center;
+        font-size: 0.95rem;
+        margin-bottom: 0.25rem;
+    }
+
+    .member-department {
+        color: #6b7280;
+        text-align: center;
+        font-size: 0.875rem;
+        margin-bottom: 1rem;
+    }
+
+    /* Social Links */
+    .social-links {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin-top: 1rem;
+    }
+
+    .social-link {
+        color: #4b5563;
+        font-size: 1.25rem;
+        transition: color 0.3s ease;
+    }
+
+    .social-link:hover {
+        color: #3b82f6;
+    }
+
+    /* Hover Effects */
+    .team-card .card-content {
+        position: relative;
+        z-index: 1;
+    }
+
+    .team-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        z-index: 0;
+    }
+
+    .team-card:hover::before {
+        opacity: 0.02;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .team-section {
+            padding: 3rem 1rem;
+        }
+
+        .section-title {
+            font-size: 1.875rem;
+        }
+
+        .faculty-grid {
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        }
+
+        .students-grid {
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        }
+
+        .profile-image-container {
+            width: 120px;
+            height: 120px;
+        }
+
+        .faculty .profile-image-container {
+            width: 150px;
+            height: 150px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .team-section {
+            padding: 2rem 0.5rem;
+        }
+
+        .faculty-grid,
+        .students-grid {
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+    }
+
+    .footer {
+        background: var(--gradient-1);
+        margin-top: auto;
+        padding: 0.5rem 0;
+        color: white;
+    }
+
+    .footer-content {
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+     max-width: 1300px;
+     margin: 0 auto;
+     }
+
+    .credit-logo {
+        height: 70px;
+        transition: transform 0.4s ease;
+        filter: brightness(0) invert(1);
+        margin: 0 1rem;
+    }
+
+    .credit-logo:hover {
+        transform: scale(1.1);
+    }
+
+    @media (max-width: 768px) {
+        .main-title {
+            font-size: 3rem;
+        }
+        
+        .services-grid {
+            padding: 0 1rem;
+            gap: 1.5rem;
+        }
+
+        .service-card {
+            height: 180px;
+        }
+
+        .footer-content {
+            flex-direction: column;
+            gap: 1.5rem;
+            text-align: center;
+        }
+    }
+</style>
+</head>
+<body>
+  <header class="header">
+    <div class="container mx-auto px-4 flex justify-between items-center">
+        <div class="flex items-center">
+            <img src="static/logo.png" alt="PAATH Logo" class="h-10 pl-0">
+            <p class="text-2xl font-bold text-white">IIT (BHU) Varanasi</p>
+            
+        </div>
+       <nav>
+           <ul class="flex space-x-3">
+               <li><a href="/" class="nav-link">Home</a></li>
+               <li><a href="/team" class="nav-link">Team</a></li>
+               <li><a href="/about" class="nav-link">About</a></li>
+               <li><a href="/contact" class="nav-link">Contact</a></li>
+           </ul>
+        </nav>
+    </div>
+  </header>
+  <section class="hero-section">
+    <h1 class="main-title">Our Team</h1>
+    <p class="subtitle">Meet our dedicated faculty and researchers</p>
+  </section>
+
+  <section class="team-section">
+    <div class="team-container">
+        <!-- Faculty Section -->
+        <h2 class="section-title">Faculty</h2>
+        <div class="faculty-grid">
+            <!-- Faculty Card -->
+            <div class="team-card faculty">
+                <div class="card-content">
+                    <div class="profile-image-container">
+                        <img src="static/1516430867435.jpg" alt="Professor Name" class="profile-image">
+                    </div>
+                    <h3 class="member-name">Dr. Ankit Gupta</h3>
+                    <p class="member-role">Principal Investigator</p>
+                    <p class="member-department">Associate Professor & MoRTH Chair Professor</p>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/ankitgupta11/" class="social-link">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Students Section -->
+        <h2 class="section-title">Researchers</h2>
+        <div class="students-grid">
+            <!-- Student Card 1 -->
+            <div class="team-card">
+                <div class="card-content">
+                    <div class="profile-image-container">
+                        <img src="static/sadiya.jpg" alt="Student Name" class="profile-image">
+                    </div>
+                    <h3 class="member-name">Sadiya Shaikh</h3>
+                    <p class="member-role">Ph.D. Research Scholar</p>
+                    <p class="member-department"></p>
+                    <div class="social-links">
+                        
+                        <a href="https://www.linkedin.com/in/sadiya-shaikh-b8b0b9187/" class="social-link">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Student Card 2 -->
+            <div class="team-card">
+                <div class="card-content">
+                    <div class="profile-image-container">
+                        <img src="static/vishu.jpg" alt="Student Name" class="profile-image">
+                    </div>
+                    <h3 class="member-name">Vishu Raj</h3>
+                    <p class="member-role">Btech Student</p>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/vishu-raj-940438226/" class="social-link">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Student Card 3 -->
+            <div class="team-card">
+                <div class="card-content">
+                    <div class="profile-image-container">
+                        <img src="static/anshika.jpg" alt="Student Name" class="profile-image">
+                    </div>
+                    <h3 class="member-name">Anshika Singh</h3>
+                    <p class="member-role">Btech Student</p>
+                    <p class="member-department"></p>
+                    <div class="social-links">
+                        
+                        <a href="https://www.linkedin.com/in/anshika-singh-610506231/" class="social-link">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+  </section>
+  
+  
+
+
+  
+</body>
+</html>

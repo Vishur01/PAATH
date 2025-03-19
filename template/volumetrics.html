@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <title>PAATH</title>
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.16/tailwind.min.css">
+   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+   <style>
+        :root {
+            --gradient-1: linear-gradient(135deg, #8b8a8c 0%, #10192a 100%);
+            --gradient-2: linear-gradient(45deg, #73787e 0%, #858a8d 100%);
+            --card-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
+            background: #f8fafc;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            margin: 0;
+        }
+
+        .header {
+            background: var(--gradient-1);
+            padding: 1rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            /* text-align: center; */
+            width: 100%;
+        
+        }
+        .logo {
+            height: 50px;
+            width: auto;
+        }
+        a {
+            white-space: nowrap; /* Ensures text stays in one line */
+        }
+
+        .nav-link {
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            font-weight: 500;
+            position: relative;
+            overflow: hidden;
+            
+        }
+
+        .nav-link:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255,255,255,0.1);
+        }
+
+        .hero-section {
+            background: var(--gradient-2);
+            padding: 0rem 0;
+            text-align: center;
+            color: white;
+            margin-bottom: 0rem;
+        } 
+
+        .main-title {
+            font-size: 4.5rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            opacity: 0.9;
+        } 
+
+        .about-section {
+            padding: 2rem;
+            background-color: #f8fafc;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            gap: 1.5rem;
+            align-items: flex-start;
+        }
+
+        .input-form {
+            flex: 1;
+            padding: 1.5rem;
+            background: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        .input-form h2 {
+            color: #333;
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.35rem;
+            color: #333;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            color: #333;
+            background: #fff;
+            transition: all 0.2s ease;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.1);
+        }
+
+        .form-group input::placeholder {
+            color: #94a3b8;
+            font-size: 0.85rem;
+        }
+
+        button[type="submit"] {
+            width: auto;
+            min-width: 100px;
+            padding: 0.5rem 1.5rem;
+            background: #0077ff;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            margin-top: 0.75rem;
+        }
+
+        button[type="submit"]:hover {
+            background: #0066dd;
+        }
+
+        .result {
+            flex: 1;
+            position: sticky;
+            top: 80px;
+            padding: 1.5rem;
+            background: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+            min-height: 300px;
+        }
+
+        .result h2 {
+            font-size: 0.9rem;
+            padding: 0.75rem;
+            margin-bottom: 0.5rem;
+            background: #f8fafc;
+            border-radius: 4px;
+            color: #333;
+        }
+
+        @media (max-width: 1024px) {
+            .container {
+                flex-direction: column;
+            }
+            
+            .input-form {
+                max-width: 100%;
+            }
+            
+            .result {
+                position: static;
+                margin-top: 1.5rem;
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .about-section {
+                padding: 1rem;
+            }
+            
+            .input-form {
+                padding: 1rem;
+            }
+            
+            .input-form h2 {
+                font-size: 1.1rem;
+                margin-bottom: 1rem;
+            }
+            
+            .form-group {
+                margin-bottom: 0.75rem;
+            }
+        }
+
+        .footer {
+            background: var(--gradient-1);
+            padding: 5px;
+            width: 100%;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .support-section, 
+        .copyright-section, 
+        .contact-section {
+            flex: 1;
+            text-align: center;
+        }
+
+        .support-section {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 10px;
+        }
+
+        .contact-section {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+
+        .credit-logo {
+            height: 60px;
+        }
+
+        @media (max-width: 768px) {
+            .footer-content {
+                flex-direction: column;
+                gap: 5px;
+            }
+
+            .support-section, 
+            .copyright-section, 
+            .contact-section {
+                text-align: center;
+            }
+
+            .contact-section {
+                align-items: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+
+            .top-bar {
+                flex-direction: column;
+                gap: 10px;
+                align-items: center;
+                padding: 10px;
+            }
+
+            .logo {
+                height: 40px;
+            }
+
+            .info-btn {
+                width: 100%;
+                text-align: center;
+                font-size: 14px;
+                padding: 6px 12px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .service-card {
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 1.5em;
+            }
+
+            .test-info-container {
+                padding: 10px;
+            }
+
+            .footer {
+                padding: 8px;
+                font-size: 14px;
+                position: relative;
+            }
+        }
+   </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="/static/logo.png" alt="PAATH Logo" class="h-10 pl-0">
+                <p class="text-2xl font-bold text-white">IIT (BHU) Varanasi</p>
+            </div>
+           <nav>
+               <ul class="flex space-x-3">
+                   <li><a href="/" class="nav-link">Home</a></li>
+                   <li><a href="/team" class="nav-link">Team</a></li>
+                   <li><a href="/about" class="nav-link">About</a></li>
+                   <li><a href="/contact" class="nav-link">Contact</a></li>
+               </ul>
+           </nav>
+       </div>
+   </header>
+   <section class="hero-section">
+    </section>
+    <section class="about-section">
+        <div class="container">
+            <div class="input-form">
+                <h2>Enter the following parameters in proper units</h2>
+                <form method="POST">
+                    <div class="form-group">
+                        <label for="Aggregate"><b>Gradation (NMAS)</b></label>
+                        <input type="number" step="0.01" name="Aggregate" placeholder="NMAS between 19mm and 26.5mm" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="source"><b>Aggregate Source (Specific Gravity)</b></label>
+                        <input type="number" step="0.01" name="source" placeholder="Specific Gravity ranging from 2.5 to 2.7" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="viscosity"><b>Binder (ZSV)</b></label>
+                        <input type="number" step="0.01" name="viscosity" placeholder="ZSV within range of 800 to 3500 Poise" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="DAG"><b>DAG (Surface Area)</b></label>
+                        <input type="number" step="0.01" name="DAG" placeholder="Surface Area between 4.5 and 6.5" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="Compaction"><b>Compaction</b></label>
+                        <input type="number" step="0.01" name="compaction" placeholder="Compactive effort ranging from 35 to 110 blows" required>
+                    </div>
+                    <!-- Other form groups -->
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+            <div class="result">
+                <!-- Results content -->
+                {% if pred7 and pred8 %}
+                <h2>Air Void: {{ pred6 }}</h2>
+                <h2>Gmb: {{ pred7 }}</h2>
+                <h2>VMA: {{ pred8 }}</h2>
+                <h2>VFB: {{ pred9 }}</h2>
+                <h2>OBC: {{ pred0 }}</h2>
+
+                {% endif %}
+            </div>
+        </div>
+    </section>
+    
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="support-section">
+                <p style="margin: 0; padding: 0;">Supported by:</p>
+                <img src="\static\nhai_logo1.png.png" alt="NHAI Logo" class="credit-logo">
+                <img src="\static\grinfra_logo1.png.png" alt="GR Infra Logo" class="credit-logo">
+            </div>
+            <div class="copyright-section">
+                © 2025 IIT (BHU) Varanasi. All rights reserved.
+            </div>
+            <div class="contact-section">
+                <!-- Contact info can go here -->
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

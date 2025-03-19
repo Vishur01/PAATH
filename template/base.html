@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <title>PAATH</title>
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.16/tailwind.min.css">
+   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+   <style>
+       :root {
+           --gradient-1: linear-gradient(135deg, #8b8a8c 0%, #10192a 100%);
+           --gradient-2: linear-gradient(45deg, #73787e 0%, #858a8d 100%);
+           --card-shadow: 0 10px 30px rgba(0,0,0,0.1);
+       }
+
+       body {
+           font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
+           background: #f8fafc;
+           min-height: 100vh;
+           display: flex;
+           flex-direction: column;
+           margin: 0;
+       }
+
+       .header {
+           background: var(--gradient-1);
+           padding: 1rem;
+           box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+           position: sticky;
+           top: 0;
+           z-index: 100;
+           /* text-align: center; */
+           width: 100%;
+        
+       }
+       .logo {
+            height: 50px;
+            width: auto;
+        }
+        a {
+            white-space: nowrap; /* Ensures text stays in one line */
+        }
+
+       .nav-link {
+           color: white;
+           padding: 0.6rem 1.2rem;
+           border-radius: 8px;
+           font-weight: 500;
+           position: relative;
+           overflow: hidden;
+           
+       }
+
+       .nav-link:before {
+           content: '';
+           position: absolute;
+           top: 0;
+           left: 0;
+           width: 100%;
+           height: 100%;
+           background: rgba(255,255,255,0.1);
+       }
+
+       .hero-section {
+           padding: 3rem 0;
+           background-image: 
+            url('static/iit1.jpg'), 
+            linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)); /* Black overlay with transparency */
+            background-size: cover; /* Ensure the image covers the entire background */
+            background-position: center; /* Center the image */
+            /* filter: blur(5px); Apply blur effect to the background image */
+           text-align: center;
+           color: white;
+           margin-bottom: 3rem;
+           
+       }
+
+       .main-title {
+           font-size: clamp(2rem, 8vw, 4.5rem);
+           font-weight: 800;
+           letter-spacing: -1px;
+           text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+           
+       }
+
+       .subtitle {
+           font-size: 1.5rem;
+           opacity: 0.9;
+           margin-bottom: 1.5rem;
+           text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+       }
+       h2 {
+            text-align: left;
+            font-size: 19px;  /* Adjust size as needed */
+            margin-left: 50px;
+            margin-right: 50px; /* Add some space from the left */
+            color: #292727;       /* Customize color */
+        }
+        .services-container {
+           max-width: 1200px;
+           margin: 0 auto;
+           padding: 0 1rem;
+       }
+
+       .services-grid {
+           display: grid;
+           grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+           gap: clamp(1rem, 3vw, 2rem);
+           margin-bottom: 4rem;
+       }
+
+       .service-card {
+           background: white;
+           border-radius: 16px;
+           padding: 2rem;
+           box-shadow: var(--card-shadow);
+           transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+           border: 1px solid rgba(0,0,0,0.05);
+           display: flex;
+           flex-direction: column;
+           align-items: center;
+           text-decoration: none;
+           aspect-ratio: 1.2;
+           width: 100%;
+       }
+
+       .service-card:hover {
+           transform: translateY(-12px);
+           box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+           background: var(--gradient-2);
+           color: white;
+       }
+
+       .service-icon {
+           font-size: clamp(2.5rem, 5vw, 3.5rem);
+           margin-bottom: 1.5rem;
+           color: #2563eb;
+           transition: all 0.4s ease;
+       }
+
+       .service-card:hover .service-icon {
+           color: white;
+           transform: scale(1.2);
+       }
+
+       .service-title {
+           font-size: clamp(1.25rem, 3vw, 1.5rem);
+           font-weight: 600;
+           text-align: center;
+           color: inherit;
+       }
+       .footer {
+            background: var(--gradient-1);
+            padding: 5px;
+            width: 100%;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .support-section, 
+        .copyright-section, 
+        .contact-section {
+            flex: 1;
+            text-align: center;
+        }
+
+        .support-section {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 10px;
+        }
+
+        .contact-section {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+
+        .credit-logo {
+            height: 60px;
+        }
+
+        @media (max-width: 768px) {
+            .footer-content {
+                flex-direction: column;
+                gap: 5px;
+            }
+
+            .support-section, 
+            .copyright-section, 
+            .contact-section {
+                text-align: center;
+            }
+
+            .contact-section {
+                align-items: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+
+            .top-bar {
+                flex-direction: column;
+                gap: 10px;
+                align-items: center;
+                padding: 10px;
+            }
+
+            .logo {
+                height: 40px;
+            }
+
+            .info-btn {
+                width: 100%;
+                text-align: center;
+                font-size: 14px;
+                padding: 6px 12px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .service-card {
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 1.5em;
+            }
+
+            .test-info-container {
+                padding: 10px;
+            }
+
+            .footer {
+                padding: 8px;
+                font-size: 14px;
+                position: relative; /* Footer should be static on mobile */
+            }
+        }
+   </style>
+</head>
+<body>
+   <header class="header">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="static/logo.png" alt="PAATH Logo" class="h-10 pl-0">
+                <p class="text-2xl font-bold text-white">IIT (BHU) Varanasi</p>
+                
+            </div>
+           <nav>
+               <ul class="flex space-x-3">
+                   <li><a href="/" class="nav-link">Home</a></li>
+                   <li><a href="/team" class="nav-link">Team</a></li>
+                   <li><a href="/about" class="nav-link">About</a></li>
+                   <li><a href="/contact" class="nav-link">Contact</a></li>
+               </ul>
+           </nav>
+       </div>
+   </header>
+
+   <section class="hero-section">
+       <h1 class="main-title">PAATH</h1>
+       <p class="subtitle" style="margin: 1; padding: 1;">Performance Analytics for Asphalt Technology & Highway</p>
+       <h2 style="color: white;">PAATH (Performance Analytics for Asphalt Technology & Highway) is an AI-powered software that leverages machine learning techniques to replace traditional testing methods in transportation and highway engineering. Designed for QA/QC applications, PAATH provides accurate and reliable, enhancing efficiency in performance evaluation and quality assurance while reducing time and costs associated with conventional testing.</h2>
+   </section>
+   <div class="services-grid">
+    <form action="/" method="POST">
+        <input type="hidden" name="model_select" value="AV" || value="Gmb" value="VMA" || value="VFB" || value="OBC">
+        <button type="submit" class="service-card">
+            <div class="service-title">Volumetric Properties</div>
+            <img src="static/vol.png" alt="Volumetric Properties" class="service-image">  
+        </button>
+    </form>
+    <form action="/" method="POST">
+        <input type="hidden" name="model_select" value="model3" || value="model4">
+        <button type="submit" class="service-card">
+            <div class="service-title">Moisture Test</div>
+            <img src="static/mositure.jpg" alt="Moisture Test" class="service-image">    
+        </button>
+    </form>
+    <form action="/" method="POST">
+        <input type="hidden" name="model_select" value="model1">
+        <button type="submit" class="service-card">
+            <div class="service-title">Cracking Test</div>
+            <img src="static/crack.jpg" alt="Cracking Test" class="service-image">
+        </button>
+    </form>
+
+    <form action="/" method="POST">
+        <input type="hidden" name="model_select" value="model2">
+        <button type="submit" class="service-card">
+            <div class="service-title">Rutting Test</div>
+            <img src="static/rut.png" alt="Rutting Test" class="service-image">
+        </button>
+    </form>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="support-section">
+                <p style="margin: 0; padding: 0;">Supported by:</p>
+                <img src="static\nhai_logo1.png.png" alt="NHAI Logo" class="credit-logo">
+                <img src="static\grinfra_logo1.png.png" alt="GR Infra Logo" class="credit-logo">
+            </div>
+            <div class="copyright-section">
+                © 2025 IIT (BHU) Varanasi. All rights reserved.
+            </div>
+            <div class="contact-section">
+                <!-- <p style="margin: 0; padding: 0;"><strong>Contact Us:</strong></p>
+                <p style="margin: 0; padding: 0;">Transportation Engineering Laboratory IIT (BHU) Varanasi</p>
+                <p style="margin: 0; padding: 0;">Email</p> -->
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
