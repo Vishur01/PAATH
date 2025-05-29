@@ -147,6 +147,32 @@
             color: #94a3b8;
             font-size: 0.85rem;
         }
+        .form-group {
+        margin: 15px 0;
+        font-family: Arial, sans-serif;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            background-color: #f9f9f9;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group select:focus {
+            border-color: #007bff;
+            outline: none;
+            background-color: #fff;
+        }
 
         button[type="submit"] {
             width: auto;
@@ -349,8 +375,13 @@
                 <h2>Enter the following parameters in proper units</h2>
                 <form method="POST">
                     <div class="form-group">
-                        <label for="Aggregate"><b>Gradation (NMAS)</b></label>
-                        <input type="number" step="0.01" name="Aggregate" placeholder="NMAS between 19mm and 26.5mm" required>
+                        <label for="Aggregate"><b>Gradation</b></label>
+                        <select name="Aggregate" required>
+                            <option value="" disabled selected>Select Gradation </option>
+                            <option value="1">BC</option>
+                            <option value="2">DBM</option>
+                            <option value="3">SMA</option>
+                        </select>
                     </div>
                     <div class="form-group">
                         <label for="source"><b>Aggregate Source (Specific Gravity)</b></label>

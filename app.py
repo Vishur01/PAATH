@@ -6,9 +6,9 @@ app = Flask(__name__, template_folder='template')
 
 # Load the models
 model1 = pickle.load(open('model1.pkl', 'rb'))
-model2 = pickle.load(open('model2.pkl', 'rb'))
-model3 = pickle.load(open('model3.pkl', 'rb'))
-model4 = pickle.load(open('model4.pkl', 'rb'))
+model2 = pickle.load(open('model2.pkl', 'rb'))#PS
+model3 = pickle.load(open('model3.pkl', 'rb'))#ITS DRY
+model4 = pickle.load(open('model4.pkl', 'rb'))#ITS WET
 AV = pickle.load(open('AV.pkl', 'rb'))
 Gmb = pickle.load(open('Gmb.pkl', 'rb'))
 VMA = pickle.load(open('VMA.pkl', 'rb'))
