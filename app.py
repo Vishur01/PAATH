@@ -5,10 +5,10 @@ import numpy as np
 app = Flask(__name__, template_folder='template')
 
 # Load the models
-model1 = pickle.load(open('model1.pkl', 'rb'))
-model2 = pickle.load(open('model2.pkl', 'rb'))#PS
-model3 = pickle.load(open('model3.pkl', 'rb'))#ITS DRY
-model4 = pickle.load(open('model4.pkl', 'rb'))#ITS WET
+model1 = pickle.load(open('CT.pkl', 'rb'))
+model2 = pickle.load(open('PS.pkl', 'rb'))#PS
+model3 = pickle.load(open('ITSdry.pkl', 'rb'))#ITS DRY
+model4 = pickle.load(open('ITSwet.pkl', 'rb'))#ITS wet
 AV = pickle.load(open('AV.pkl', 'rb'))
 Gmb = pickle.load(open('Gmb.pkl', 'rb'))
 VMA = pickle.load(open('VMA.pkl', 'rb'))
