@@ -422,6 +422,12 @@
         </div>
             <div class="result">
                 <!-- Results content -->
+                {% if pred2 %}
+                    <h2>Permanent Strain lies between (pg): {{ pred2 }}</h2>
+                {% endif %}
+                {% if pred22 %}
+                    <h2>Permanent Strain lies between (sp): {{ pred22 }}</h2>
+                {% endif %}
                 {% if pred1 %}
                     <h3>Cracking Tolerance Index lies between (pg): {{ pred1 }}</h3>
                 {% endif %}

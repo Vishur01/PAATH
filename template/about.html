@@ -252,43 +252,54 @@
 
             <div class="research-card">
                 <h3 class="research-title">How PAATH Works</h3>
-                <div class="research-text">
-                    <p>PAATH streamlines pavement evaluation by providing precise predictions for key performance characteristics, reducing the need for time-intensive laboratory testing. By analyzing critical mix design parameters, PAATH offers reliable assessments across four fundamental pavement performance tests:</p>
-                    
-                    <h4 class="font-bold mt-4 mb-2">1. Volumetric Properties Analysis</h4>
-                    <!-- <p>The structural integrity and durability of asphalt mixtures depend on their internal composition. PAATH evaluates:</p>
-                    <ul class="list-disc pl-6 mb-4">
-                        <li>Aggregate Structure: Ensures optimal particle distribution for stability</li>
-                        <li>Voids in Mineral Aggregate (VMA): Measures air spaces between aggregates</li>
-                        <li>Air Voids: Determines the balance between flexibility and strength</li>
-                        <li>Asphalt Content: Assesses binder proportions for performance</li>
-                    </ul> -->
-
-                    <h4 class="font-bold mt-4 mb-2">2. Moisture Susceptibility Test</h4>
-                    <!-- <p>PAATH predicts resistance to water-induced damage by assessing:</p>
-                    <ul class="list-disc pl-6 mb-4">
-                        <li>Stripping Potential: Likelihood of binder-aggregate separation</li>
-                        <li>Adhesion Loss: Strength of bonding under wet conditions</li>
-                        <li>Deterioration Trends: Potential weakening over time</li>
-                    </ul> -->
-
-                    <h4 class="font-bold mt-4 mb-2">3. Cracking Resistance Test</h4>
-                    <!-- <p>PAATH analyzes susceptibility to:</p>
-                    <ul class="list-disc pl-6 mb-4">
-                        <li>Fatigue Cracking: From repeated traffic loads</li>
-                        <li>Thermal Cracking: Due to temperature variations</li>
-                        <li>Surface Distress: Early-stage crack formation</li>
-                    </ul> -->
-
-                    <h4 class="font-bold mt-4 mb-2">4. Rutting Resistance Test</h4>
-                    <!-- <p>PAATH evaluates:</p>
-                    <ul class="list-disc pl-6 mb-4">
-                        <li>Load-Bearing Capacity: Resistance to traffic-induced stress</li>
-                        <li>Aggregate Interlock: Prevention of particle displacement</li>
-                        <li>Compaction Levels: Optimal density for stability</li>
-                    </ul> -->
-                </div>
-            </div>
+                    <p class="research-text">
+                        PAATH uses a suite of advanced laboratory performance tests to characterize asphalt mixtures and evaluate critical properties such as rutting resistance, cracking potential, moisture susceptibility, and volumetric behavior. These tests, aligned with international standards, enable accurate assessment of mechanical behavior, ensuring compliance and enhancing QA/QC.
+                    </p>
+                    <br>
+                    <h4 class="text-xl font-semibold text-gray-700 mb-2">1. Dynamic Creep Test</h4>
+                    <p class="research-text">
+                        Conducted as per <strong>BS EN 12697-25:2005</strong>, this test determines the permanent deformation under repeated load at 60°C using a Dynamic Testing System. Cylindrical samples (100 mm) undergo <strong>3600 cycles</strong> under 100 ± 2 kPa axial stress.
+                        <br><br>
+                        <code>εₙ = ((h₀ − hₙ) / h₀) × 100%</code>
+                        <br>
+                        where h₀ = initial height, hₙ = height after cycles.
+                    </p>
+                    <br>
+                    <h4 class="text-xl font-semibold text-gray-700 mb-2">2. Ideal Cracking Test (IDEAL-CT)</h4>
+                    <p class="research-text">
+                        Follows <strong>ASTM D8225-19</strong> to assess cracking resistance at 25°C. Long-term aged samples are tested for peak load (P<sub>max</sub>), fracture energy (G<sub>f</sub>), and modulus slope (|ΔP/Δl|). 
+                        <br><br>
+                        <code>CTIndex = G<sub>f</sub> / (|ΔP/Δl| × l/D)</code>
+                    </p>
+                    <br>
+                    <h4 class="text-xl font-semibold text-gray-700 mb-2">3. Modified Lottman Test</h4>
+                    <p class="research-text">
+                        Measures moisture susceptibility by comparing Indirect Tensile Strength (ITS) of conditioned vs. unconditioned samples.
+                        <br><br>
+                        <code>ITS = (2 × P) / (π × D × t)</code>
+                        <br>
+                        TSR = ITS<sub>wet</sub> / ITS<sub>dry</sub>
+                    </p>
+                    <br>
+                    <h4 class="text-xl font-semibold text-gray-700 mb-2">4. Volumetric Properties</h4>
+                    <p class="research-text">
+                        <strong>Bulk Specific Gravity (Gmb):</strong><br>
+                        <code>Gmb = W₁ / (W₂ − W₃)</code><br>
+                        W₁ = dry mass, W₂ = SSD mass, W₃ = submerged mass.
+                        <br><br>
+                        <strong>Air Voids (AV):</strong><br>
+                        <code>AV = [(Gmm − Gmb) / Gmm] × 100%</code>
+                        <br><br>
+                        <strong>Voids in Mineral Aggregate (VMA):</strong><br>
+                        <code>VMA = 100 × (1 − (Gmb × Ps / Gsb))</code><br>
+                        Ps = % aggregate, Gsb = aggregate specific gravity.
+                        <br><br>
+                        <strong>Voids Filled with Bitumen (VFB):</strong><br>
+                        <code>VFB = [(VMA − AV) / VMA] × 100%</code>
+                        <br><br>
+                        <strong>Optimum Binder Content (OBC):</strong><br>
+                        Determined at 4.0% air voids using graphical interpolation per <strong>MS-2</strong> and <strong>IRC:111-2009</strong>.
+                    </p>
 
             <div class="research-card">
                 <h3 class="research-title">Reliability: PAATH vs. Lab Testing</h3>

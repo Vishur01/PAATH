@@ -388,9 +388,30 @@
                         <input type="number" step="0.01" name="source" placeholder="Specific Gravity ranging from 2.5 to 2.7" required>
                     </div>
                     <div class="form-group">
-                        <label for="viscosity"><b>Binder type (°C)</b></label>
-                        <input type="number" step="0.01" name="viscosity" placeholder="PG failure temp" required>
+                        <label for="binder_input_type"><b>Binder Input Type</b></label>
+                        <select name="binder_input_type" id="binder_input_type" required onchange="toggleBinderInput()">
+                            <option value="pg">PG Failure Temperature</option>
+                            <option value="softening">Softening Point</option>
+                        </select>
                     </div>
+
+                    <div class="form-group" id="pg_input_group">
+                        <label for="viscosity"><b>PG Failure Temp (°C)</b></label>
+                        <input type="number" step="0.01" name="viscosity" placeholder="PG failure temp">
+                    </div>
+
+                    <div class="form-group" id="softening_input_group" style="display: none;">
+                        <label for="softening_point"><b>Softening Point (°C)</b></label>
+                        <input type="number" step="0.01" name="softening_point" placeholder="Softening Point">
+                    </div>
+
+                    <script>
+                        function toggleBinderInput() {
+                            const type = document.getElementById('binder_input_type').value;
+                            document.getElementById('pg_input_group').style.display = type === 'pg' ? 'block' : 'none';
+                            document.getElementById('softening_input_group').style.display = type === 'softening' ? 'block' : 'none';
+                        }
+                    </script>
                     <div class="form-group">
                         <label for="DAG"><b>DAG (Surface Area)</b></label>
                         <input type="number" step="0.01" name="DAG" placeholder="Surface Area between 4.5 and 6.5" required>
@@ -411,6 +432,14 @@
                 <h2>VMA: {{ pred8 }}</h2>
                 <h2>VFB: {{ pred9 }}</h2>
                 <h2>OBC: {{ pred0 }}</h2>
+
+                {% endif %}
+                {% if pred77 and pred88 %}
+                <h2>Air Void (sp): {{ pred66 }}</h2>
+                <h2>Gmb: {{ pred77 }}</h2>
+                <h2>VMA: {{ pred88 }}</h2>
+                <h2>VFB: {{ pred99 }}</h2>
+                <h2>OBC: {{ pred00 }}</h2>
 
                 {% endif %}
             </div>
