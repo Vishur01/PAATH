@@ -66,7 +66,7 @@ def rutting(model):
             # Prepare feature vector and predict using CT_pg
             input_vector = [[aggregate, source, binder_value, dag, air_voids]]
             pred1 = CT_pg.predict(input_vector)
-            pred1 = [f"{float(pred1)-0.2:.2f}", f"{float(pred1)+0.2:.2f}"]
+            pred1 = [f"{float(pred1)-2:.2f}", f"{float(pred1)+2:.2f}"]
             # pass pred1 to template
 
         elif binder_input_type == 'softening':
@@ -74,7 +74,7 @@ def rutting(model):
             # Prepare feature vector and predict using CT_sp
             input_vector = [[aggregate, source, binder_value, dag, air_voids]]
             pred11 = CT_sp.predict(input_vector)
-            pred11 = [f"{float(pred11)-0.2:.2f}", f"{float(pred11)+0.2:.2f}"]
+            pred11 = [f"{float(pred11)-2:.2f}", f"{float(pred11)+2:.2f}"]
             # pass pred11 to template
         
     return render_template('rutting.html', model=model, pred1=pred1, pred11=pred11)
@@ -94,7 +94,7 @@ def strain(model):
             binder_value = float(request.form['viscosity'])
             # Prepare feature vector and predict using CT_pg
             input_vector = [[aggregate, source, binder_value, dag, air_voids]]
-            pred2 = CT_pg.predict(input_vector)
+            pred2 = PS_pg.predict(input_vector)
             pred2 = [f"{float(pred2)-2:.2f}", f"{float(pred2)+2:.2f}"]
             # pass pred1 to template
 
@@ -102,7 +102,7 @@ def strain(model):
             binder_value = float(request.form['softening_point'])
             # Prepare feature vector and predict using CT_sp
             input_vector = [[aggregate, source, binder_value, dag, air_voids]]
-            pred22 = CT_sp.predict(input_vector)
+            pred22 = PS_sp.predict(input_vector)
             pred22 = [f"{float(pred22)-2:.2f}", f"{float(pred22)+2:.2f}"]
             # pass pred11 to template
         
@@ -125,9 +125,7 @@ def moisture(model):
             
             input_vector = [[aggregate, source, binder_value, dag, air_voids]]
             pred3 = np.round(ITSdry.predict(input_vector), 2)
-            pred3 = [f"{float(pred3)-20:.2f}", f"{float(pred3)+20:.2f}"]
             pred4 = np.round(ITSwet.predict(input_vector), 2)
-            pred4 = [f"{float(pred4)-20:.2f}", f"{float(pred4)+20:.2f}"]
             tsr1 = np.round(pred4 * 100 / pred3, 2) if pred3.all() != 0 else "Invalid prediction: Division by zero"
 
       
@@ -137,9 +135,7 @@ def moisture(model):
         
             input_vector = [[aggregate, source, binder_value, dag, air_voids]]
             pred33 = np.round(ITSdry_sp.predict(input_vector), 2)
-            pred33 = [f"{float(pred33)-20:.2f}", f"{float(pred33)+20:.2f}"]
             pred44 = np.round(ITSwet_sp.predict(input_vector), 2)
-            pred44 = [f"{float(pred44)-20:.2f}", f"{float(pred44)+20:.2f}"]
             tsr2 = np.round(pred44 * 100 / pred33, 2) if pred33.all() != 0 else "Invalid prediction: Division by zero"
           
         
